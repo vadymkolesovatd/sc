@@ -5,6 +5,10 @@
   --grey: #c2c2c2;
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 a {
   text-decoration: none;
 }
@@ -13,6 +17,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  touch-action: manipulation;
 }
 
 button {

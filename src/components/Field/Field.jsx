@@ -38,7 +38,7 @@ export default function Field({ id, label, type, value, onGetValue }) {
           className={css.input}
           onInput={onInput}
           value={inputValue}
-          inputMode="numeric"
+          inputMode="decimal"
         />
         <span className={css.type}>{sign}</span>
       </div>
