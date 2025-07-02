@@ -5,22 +5,22 @@ import css from "./Field.module.css";
 export default function Field({ id, label, type, value, onGetValue }) {
   const [inputValue, setInputValue] = useState(value === 0 ? "" : value);
 
-  const sign = type === "currency" ? "zła" : "h";
+  const sign = type === "currency" ? "złv" : "h";
 
   const onInput = (e) => {
-    let value = e.target.value;
+    let newValue = e.target.value.replace(",", ".");
 
     if (type !== "currency") {
-      if (!hasOnlyDigits(value)) {
+      if (!hasOnlyDigits(newValue)) {
         return;
       }
 
-      value = value.replace(/\D/g, "");
+      newValue = newValue.replace(/\D/g, "");
     }
 
-    setInputValue(value.replace(",", "."));
+    setInputValue(newValue === 0 || newValue === "" ? "" : Number(newValue));
 
-    onGetValue({ id, value: Number(value.replace(",", ".")) });
+    onGetValue({ id, value: Number(newValue) });
   };
 
   return (
