@@ -34,7 +34,7 @@ export default function Field({ id, label, type, value, onGetValue }) {
           name={id}
           type={type === "currency" ? "number" : "text"}
           placeholder="0"
-          step="1"
+          step="any"
           className={css.input}
           onInput={onInput}
           value={inputValue}
