@@ -5,10 +5,10 @@ import css from "./Field.module.css";
 export default function Field({ id, label, type, value, onGetValue }) {
   const [inputValue, setInputValue] = useState(value === 0 ? "" : value);
 
-  const sign = type === "currency" ? "złb" : "h";
+  const sign = type === "currency" ? "zł" : "h";
 
   const onInput = (e) => {
-    let newValue = e.target.value.replace(",", ".");
+    let newValue = e.target.value;
 
     if (type !== "currency") {
       if (!hasOnlyDigits(newValue)) {
@@ -32,7 +32,7 @@ export default function Field({ id, label, type, value, onGetValue }) {
         <input
           id={id}
           name={id}
-          type={type === "currency" ? "number" : "text"}
+          type={"text"}
           placeholder="0"
           step="any"
           className={css.input}
