@@ -5,7 +5,7 @@ import css from "./Field.module.css";
 export default function Field({ id, label, type, value, onGetValue }) {
   const [inputValue, setInputValue] = useState(value === 0 ? "" : value);
 
-  const sign = type === "currency" ? "złb" : "h";
+  const sign = type === "currency" ? "zł" : "h";
 
   const onInput = (e) => {
     let newValue = e.target.value.replace(",", ".");
