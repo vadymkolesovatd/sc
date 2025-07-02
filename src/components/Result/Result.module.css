@@ -1,0 +1,25 @@
+.result {
+  padding-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.value {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--primary-dark);
+}

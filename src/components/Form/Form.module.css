@@ -1,0 +1,72 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.list {
+  width: 100%;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.item {
+  width: calc((100% - 15px) / 2);
+  display: flex;
+  align-items: end;
+}
+
+.checkbox {
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border: 1px solid var(--grey);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.checkbox.checked {
+  border: 1px solid var(--primary-dark);
+  background-color: var(--primary-dark);
+  animation: bounce 200ms linear;
+}
+
+.checkIcon {
+  width: 12px;
+  height: 12px;
+  color: var(--white);
+}
+.checkIcon.hidden {
+  display: none;
+}
+
+.checkboxLabel {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--primary-dark);
+  user-select: none;
+}
+
+.nativeCheckbox {
+  display: none;
+}
+
+@keyframes bounce {
+  0% {
+    scale: 1;
+    opacity: 0;
+  }
+  50% {
+    scale: 0.9;
+    opacity: 0.5;
+  }
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
+}
