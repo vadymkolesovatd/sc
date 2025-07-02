@@ -9,6 +9,7 @@ export default function Field({ id, label, type, value, onGetValue }) {
 
   const onInput = (e) => {
     let value = e.target.value;
+    value = value.replace(",", ".");
 
     if (type !== "currency") {
       if (!hasOnlyDigits(value)) {
