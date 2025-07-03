@@ -1,11 +1,5 @@
 export function loadData() {
-  const loadedData = localStorage.getItem("data");
-
-  if (loadedData) {
-    return JSON.parse(loadedData);
-  }
-
-  return {
+  const data = {
     general: {
       rate: {
         id: "rate",
@@ -46,6 +40,12 @@ export function loadData() {
         type: "time",
         value: 0,
       },
+      l4: {
+        id: "l4",
+        label: "Sick leave (days)",
+        type: "days",
+        value: 0,
+      },
       bonus: {
         id: "bonus",
         label: "Bonus",
@@ -60,8 +60,39 @@ export function loadData() {
       },
     },
   };
+
+  const loadedData = JSON.parse(localStorage.getItem("data"));
+
+  if (loadedData) {
+    const validatedData = mergeStructure(data, loadedData);
+    return validatedData;
+  }
+
+  return data;
 }
 
 export function saveData(data) {
   localStorage.setItem("data", JSON.stringify(data));
+}
+
+function mergeStructure(template, target) {
+  if (typeof template !== "object" || template === null) {
+    return target !== undefined ? target : template;
+  }
+
+  if (typeof target !== "object" || target === null) {
+    return JSON.parse(JSON.stringify(template));
+  }
+
+  const result = Array.isArray(template) ? [] : {};
+
+  for (const key of Object.keys(template)) {
+    if (key in target) {
+      result[key] = mergeStructure(template[key], target[key]);
+    } else {
+      result[key] = JSON.parse(JSON.stringify(template[key]));
+    }
+  }
+
+  return result;
 }

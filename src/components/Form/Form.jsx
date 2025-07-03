@@ -44,7 +44,7 @@ export default function Form({ data, onDataChange }) {
         <input
           id="checkbox"
           type="checkbox"
-          checked={checkboxChecked}
+          checked={data.additional.underTwentySix}
           onChange={onCheckboxChange}
           className={css.nativeCheckbox}
         />

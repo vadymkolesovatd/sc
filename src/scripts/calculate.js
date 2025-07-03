@@ -8,7 +8,8 @@ export function calculateSalaries(data) {
   const hours = data.general.hours.value;
   const privateLeave = data.additional.private_leave.value;
   const forceMajeure = data.additional.force_majeure.value;
-  const salary = rate * (hours - privateLeave - forceMajeure / 2);
+  const l4 = data.additional.l4.value * 0.8 * 8;
+  const salary = rate * (hours + l4 - privateLeave - forceMajeure / 2);
   const overtime50Salary =
     data.general.rate.value * 1.5 * data.additional.overtime_half.value;
   const overtime100Salary =
